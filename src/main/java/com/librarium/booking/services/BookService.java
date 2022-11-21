@@ -25,6 +25,10 @@ public class BookService {
     }
 
     public Book save(Book book) {
-        return this.bookRepository.save(book);
+        try {
+            return this.bookRepository.save(book);
+        } catch(Exception e){
+            throw new IllegalArgumentException("Error trying to save, invalid book");
+        }
     }
 }
